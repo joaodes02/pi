@@ -9,35 +9,31 @@ function Rev({ value, setValue }) {
       };
 
       // Calcula a média superior se os campos relacionados forem alterados
-      if (["esquerda", "centro", "direita"].includes(name)) {
-        const esq = parseFloat(updatedValues.esquerda) || 0;
-        const centro = parseFloat(updatedValues.centro) || 0;
-        const dir = parseFloat(updatedValues.direita) || 0;
-        updatedValues.media = ((esq + centro + dir) / 3)
+      if (["esqSup", "centroSup", "dirSup"].includes(name)) {
+        const esqSup = parseFloat(updatedValues.esqSup) || 0;
+        const centroSup = parseFloat(updatedValues.centroSup) || 0;
+        const dirSup = parseFloat(updatedValues.dirSup) || 0;
+        updatedValues.mediaSup = ((esqSup + centroSup + dirSup) / 3)
           .toFixed(1)
           .replace(".", ","); // Converte ponto de volta para vírgula
-        const max = Math.max(esq, centro, dir);
-        const min = Math.min(esq, centro, dir);
-        updatedValues.disp = (max - min).toFixed(1).replace(".", ",");
+        const max = Math.max(esqSup, centroSup, dirSup);
+        const min = Math.min(esqSup, centroSup, dirSup);
+        updatedValues.dispSup = (max - min).toFixed(1).replace(".", ",");
       }
 
       // Calcula a média inferior se os campos relacionados forem alterados
-      if (
-        ["esquerdaInferior", "centroInferior", "direitaInferior"].includes(name)
-      ) {
-        const esqInf = parseFloat(updatedValues.esquerdaInferior) || 0;
-        const centroInf = parseFloat(updatedValues.centroInferior) || 0;
-        const dirInf = parseFloat(updatedValues.direitaInferior) || 0;
-        updatedValues.mediaInferior = ((esqInf + centroInf + dirInf) / 3)
+      if (["esqInf", "centroInf", "dirInf"].includes(name)) {
+        const esqInf = parseFloat(updatedValues.esqInf) || 0;
+        const centroInf = parseFloat(updatedValues.centroInf) || 0;
+        const dirInf = parseFloat(updatedValues.dirInf) || 0;
+        updatedValues.mediaInf = ((esqInf + centroInf + dirInf) / 3)
           .toFixed(1)
           .replace(".", ",");
 
         //calculando dispersão
         const maxInf = Math.max(esqInf, centroInf, dirInf);
         const minInf = Math.min(esqInf, centroInf, dirInf);
-        updatedValues.dispInferior = (maxInf - minInf)
-          .toFixed(1)
-          .replace(".", ",");
+        updatedValues.dispInf = (maxInf - minInf).toFixed(1).replace(".", ",");
       }
 
       return updatedValues;
@@ -56,8 +52,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="7"
-              name="esquerda"
-              value={value.esquerda}
+              name="esqSup"
+              value={value.esqSup}
               onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               type="text"
@@ -68,8 +64,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="8"
-              name="centro"
-              value={value.centro}
+              name="centroSup"
+              value={value.centroSup}
               onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               type="text"
@@ -80,8 +76,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="9"
-              name="direita"
-              value={value.direita}
+              name="dirSup"
+              value={value.dirSup}
               onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               type="text"
@@ -92,8 +88,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="-1"
-              name="media"
-              value={value.media}
+              name="mediaSup"
+              value={value.mediaSup}
               readOnly
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md bg-gray-100 focus:outline-none"
               type="text"
@@ -104,8 +100,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="-1"
-              name="disp"
-              value={value.disp}
+              name="dispSup"
+              value={value.dispSup}
               readOnly
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md bg-gray-100 focus:outline-none"
               type="text"
@@ -116,8 +112,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={3}
               tabIndex="13"
-              name="liga"
-              value={value.liga}
+              name="ligaSup"
+              value={value.ligaSup}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
               type="text"
             />
@@ -134,8 +130,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="10"
-              name="esquerdaInferior"
-              value={value.esquerdaInferior}
+              name="esqInf"
+              value={value.esqInf}
               onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               type="text"
@@ -146,8 +142,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="11"
-              name="centroInferior"
-              value={value.centroInferior}
+              name="centroInf"
+              value={value.centroInf}
               onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               type="text"
@@ -158,8 +154,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="12"
-              name="direitaInferior"
-              value={value.direitaInferior}
+              name="dirInf"
+              value={value.dirInf}
               onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               type="text"
@@ -170,8 +166,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="-1"
-              name="mediaInferior"
-              value={value.mediaInferior}
+              name="mediaInf"
+              value={value.mediaInf}
               readOnly
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md bg-gray-100 focus:outline-none"
               type="text"
@@ -182,8 +178,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={4}
               tabIndex="-1"
-              name="dispInferior"
-              value={value.dispInferior}
+              name="dispInf"
+              value={value.dispInf}
               readOnly
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md bg-gray-100 focus:outline-none"
               type="text"
@@ -194,8 +190,8 @@ function Rev({ value, setValue }) {
             <input
               maxLength={3}
               tabIndex="14"
-              name="ligaInferior"
-              value={value.ligaInferior}
+              name="ligaInf"
+              value={value.ligaInf}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
               type="text"
             />

@@ -13,8 +13,8 @@ function Dureza({ value, setValue }) {
         <div className="flex flex-col items-center">
           <label className="text-sm font-medium text-gray-600">Esquerda:</label>
           <input
-            name="esquerda"
-            value={value.esquerda}
+            name="esq"
+            value={value.esq}
             tabIndex="15"
             onChange={handleChange}
             maxLength={2}
@@ -37,9 +37,9 @@ function Dureza({ value, setValue }) {
         <div className="items-center flex flex-col">
           <label className="text-sm font-medium text-gray-600">Direita:</label>
           <input
-            name="direita"
+            name="dir"
             tabIndex="17"
-            value={value.direita}
+            value={value.dir}
             onChange={handleChange}
             maxLength={2}
             type="text"

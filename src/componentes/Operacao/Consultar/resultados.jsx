@@ -1,94 +1,4 @@
-function Resultados() {
-  const dados = [
-    {
-      id: 1,
-      horario: "15:00:00",
-      item: "E40090",
-      bobina: "0909",
-      revEsqSup: "2.0",
-      revCentroSup: "2.0",
-      nominalSup: "2.0",
-      nominalInf: 2.2,
-      revDirSup: "2.0",
-      revEsqInf: "2.0",
-      revCentroInf: "2.0",
-      revDirInf: "2.0",
-      dEsq: 65,
-      dCentro: 65,
-      dDir: 65,
-      ligaSup: "1.0",
-      ligaInf: "0.9",
-      mediaSup: "2,0",
-      mediaInf: "2,0",
-      oilEsqSup: "3.3",
-      oilCentroSup: "3.3",
-      oilDirSup: "3.3",
-      mediaOilSup: "3.3",
-      oilEsqInf: "3.3",
-      oilCentroInf: "3.3",
-      oilDirInf: "3.3",
-      mediaOilInf: "3.3",
-    },
-    {
-      id: 1,
-      horario: "15:00:00",
-      item: "E40090",
-      bobina: "0909",
-      revEsqSup: "2.0",
-      revCentroSup: "2.0",
-      nominalSup: "2.0",
-      nominalInf: 2.2,
-      revDirSup: "2.0",
-      revEsqInf: "2.0",
-      revCentroInf: "2.0",
-      revDirInf: "2.0",
-      dEsq: 65,
-      dCentro: 65,
-      dDir: 65,
-      ligaSup: "1.0",
-      ligaInf: "0.9",
-      mediaSup: "2,0",
-      mediaInf: "2,0",
-      oilEsqSup: "3.3",
-      oilCentroSup: "3.3",
-      oilDirSup: "3.3",
-      mediaOilSup: "3.3",
-      oilEsqInf: "3.3",
-      oilCentroInf: "3.3",
-      oilDirInf: "3.3",
-      mediaOilInf: "3.3",
-    },
-    {
-      id: 1,
-      horario: "15:00:00",
-      item: "E40090",
-      bobina: "0909",
-      revEsqSup: "2.0",
-      revCentroSup: "2.0",
-      nominalSup: "2.0",
-      nominalInf: 2.2,
-      revDirSup: "2.0",
-      revEsqInf: "2.0",
-      revCentroInf: "2.0",
-      revDirInf: "2.0",
-      dEsq: 65,
-      dCentro: 65,
-      dDir: 65,
-      ligaSup: "1.0",
-      ligaInf: "0.9",
-      mediaSup: "2,0",
-      mediaInf: "2,0",
-      oilEsqSup: "3.3",
-      oilCentroSup: "3.3",
-      oilDirSup: "3.3",
-      mediaOilSup: "3.3",
-      oilEsqInf: "3.3",
-      oilCentroInf: "3.3",
-      oilDirInf: "3.3",
-      mediaOilInf: "3.3",
-    },
-  ];
-
+function Resultados({ dados }) {
   return (
     <>
       <div className="p-1 flex justify-center">
@@ -125,96 +35,96 @@ function Resultados() {
               {dados.map((info) => (
                 <tr key={info.id} className="hover:bg-gray-50">
                   <td className="border border-gray-300 px-4 py-2">
-                    {info.horario}
+                    {info.dados.horario}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
-                    {info.item}-{info.bobina}
+                    {info.dados.item}-{info.dados.bobina}
                   </td>
                   <td className="font-bold border-2 border-gray-300 px-4 py-2">
-                    {info.nominalSup}
+                    {info.nominal.superior}
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.revEsqSup}
+                        {info.rev.esqSup}
                       </td>
                       <td className="border border-black p-2">
-                        {info.revCentroSup}
+                        {info.rev.centroSup}
                       </td>
                       <td className="border border-black p-2">
-                        {info.revDirSup}
+                        {info.rev.dirSup}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.mediaSup}
+                        {info.rev.mediaSup}
                       </td>
                       <td className="border-2 border-blue-400 p-2">
-                        {info.ligaSup}
+                        {info.rev.ligaSup}
                       </td>
                     </td>
                   </td>
                   <td className="font-bold border-2 border-gray-300 px-4 py-2">
-                    {info.nominalInf}
+                    {info.nominal.inferior}
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.revEsqInf}
+                        {info.rev.esqInf}
                       </td>
                       <td className="border border-black p-2">
-                        {info.revCentroInf}
+                        {info.rev.centroInf}
                       </td>
                       <td className="border border-black p-2">
-                        {info.revDirInf}
+                        {info.rev.dirInf}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.mediaInf}
+                        {info.rev.mediaInf}
                       </td>
                       <td className="border-2 border-blue-400 p-2">
-                        {info.ligaInf}
+                        {info.rev.ligaInf}
                       </td>
                     </td>
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.oilEsqSup}
+                        {info.oil.esqSup}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oilCentroSup}
+                        {info.oil.centroSup}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oilDirSup}
+                        {info.oil.dirSup}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.mediaOilSup}
+                        {info.oil.mediaSup}
                       </td>
                     </td>
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.oilEsqInf}
+                        {info.oil.esqInf}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oilCentroInf}
+                        {info.oil.centroInf}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oilDirInf}
+                        {info.oil.dirInf}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.mediaOilInf}
+                        {info.oil.mediaInf}
                       </td>
                     </td>
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="font-bold border-2 border-black p-2">
-                      {info.dEsq}
+                      {info.dureza.esq}
                     </td>
                     <td className="font-bold border-2 border-black p-2">
-                      {info.dEsq}
+                      {info.dureza.centro}
                     </td>
                     <td className="font-bold border-2 border-black p-2">
-                      {info.dEsq}
+                      {info.dureza.dir}
                     </td>
                   </td>
                 </tr>

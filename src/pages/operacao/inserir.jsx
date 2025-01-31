@@ -14,67 +14,12 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
   }
 
   // Definindo o estado para os componentes
-  const [dadoEdit, setDadoEdit] = useState(idDados ? recuperaDado() : "");
-  const [dados, setDados] = useState(
-    idDados
-      ? {
-          equipamento: dadoEdit.equipamento,
-          horario: dadoEdit.horario,
-          item: dadoEdit.item,
-          bobina: dadoEdit.bobina,
-          extra: dadoEdit.extra,
-        }
-      : ""
-  );
-  const [nominal, setNominal] = useState(
-    idDados
-      ? {
-          superior: dadoEdit.nominalSup,
-          inferior: dadoEdit.nominalInf,
-        }
-      : ""
-  );
-  const [rev, setRev] = useState(
-    idDados
-      ? {
-          esquerda: dadoEdit.revEsqSup,
-          centro: dadoEdit.revCentroSup,
-          direita: dadoEdit.revDirSup,
-          esquerdaInferior: dadoEdit.revEsqInf,
-          centroInferior: dadoEdit.revCentroInf,
-          direitaInferior: dadoEdit.revDirInf,
-          media: dadoEdit.mediaSup,
-          mediaInferior: dadoEdit.mediaInf,
-          liga: dadoEdit.ligaSup,
-          ligaInferior: dadoEdit.ligaInf,
-          disp: "s",
-          dispInferior: "d",
-        }
-      : ""
-  );
-  const [dureza, setDureza] = useState(
-    idDados
-      ? {
-          esquerda: dadoEdit.dEsq,
-          centro: dadoEdit.dCentro,
-          direita: dadoEdit.dDir,
-        }
-      : ""
-  );
-  const [oil, setOil] = useState(
-    idDados
-      ? {
-          esquerda: dadoEdit.oilEsqSup,
-          centro: dadoEdit.oilCentroSup,
-          direita: dadoEdit.oilDirSup,
-          esquerdaInferior: dadoEdit.oilEsqInf,
-          centroInferior: dadoEdit.oilCentroInf,
-          direitaInferior: dadoEdit.oilDirInf,
-          media: dadoEdit.mediaOilSup,
-          mediaInferior: dadoEdit.mediaOilInf,
-        }
-      : ""
-  );
+  const [dadoEdit, setDadoEdit] = useState(recuperaDado());
+  const [dados, setDados] = useState(idDados ? dadoEdit.dados : "");
+  const [nominal, setNominal] = useState(idDados ? dadoEdit.nominal : "");
+  const [rev, setRev] = useState(idDados ? dadoEdit.rev : "");
+  const [dureza, setDureza] = useState(idDados ? dadoEdit.dureza : "");
+  const [oil, setOil] = useState(idDados ? dadoEdit.oil : "");
 
   // Função para limpar os campos
   const handleLimpar = () => {
@@ -84,40 +29,30 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
       horario: "",
       item: "",
       bobina: "",
-      extra: "",
     });
-    setNominal({
-      superior: "",
-      inferior: "",
-    });
+    setNominal({ superior: "", inferior: "" });
     setRev({
-      esquerda: "",
-      centro: "",
-      direita: "",
-      esquerdaInferior: "",
-      centroInferior: "",
-      direitaInferior: "",
-      media: "",
-      mediaInferior: "",
-      liga: "",
-      ligaInferior: "",
-      disp: "",
-      dispInferior: "",
+      esqSup: "",
+      centroSup: "",
+      dirSup: "",
+      esqInf: "",
+      centroInf: "",
+      dirInf: "",
+      ligaSup: "",
+      ligaInf: "",
+      mediaSup: "",
+      mediaInf: "",
     });
-    setDureza({
-      esquerda: "",
-      centro: "",
-      direita: "",
-    });
+    setDureza({ esq: "", centro: "", dir: "" });
     setOil({
-      esquerda: "",
-      centro: "",
-      direita: "",
-      esquerdaInferior: "",
-      centroInferior: "",
-      direitaInferior: "",
-      media: "",
-      mediaInferior: "",
+      esqSup: "",
+      centroSup: "",
+      dirSup: "",
+      mediaSup: "",
+      esqInf: "",
+      centroInf: "",
+      dirInf: "",
+      mediaInf: "",
     });
   };
 
@@ -126,7 +61,7 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
       <h1 className="text-3xl pb-4 font-bold">Inclusão de resultado:</h1>
       <div className="p-3 flex flex-col border-4 border-indigo-200 bg-gray-200">
         <div className="p-2 border border-gray-400 mt-2 w-[800px]">
-          <Dados value={dados} setValue={setDados} />
+          <Dados idDados={idDados} value={dados} setValue={setDados} />
         </div>
         <div className="border border-gray-400 mt-2 w-[800px]">
           <Nominal value={nominal} setValue={setNominal} />

@@ -1,4 +1,4 @@
-function Dados({ value, setValue }) {
+function Dados({ idDados, value, setValue }) {
   // Função para gerar horários
   const hours = Array.from({ length: 24 }, (_, i) => {
     const hour = String(i).padStart(2, "0");
@@ -45,11 +45,17 @@ function Dados({ value, setValue }) {
             <option value="" disabled>
               Selecione
             </option>
-            {equipamentos.map((equipamento, index) => (
-              <option key={index} value={equipamento}>
-                {equipamento}
+            {!value.equipamento ? (
+              equipamentos.map((equipamento, index) => (
+                <option key={index} value={equipamento}>
+                  {equipamento}
+                </option>
+              ))
+            ) : (
+              <option key={value.equipamento} value={value.equipamento}>
+                {value.equipamento}
               </option>
-            ))}
+            )}
           </select>
         </div>
 
@@ -65,14 +71,22 @@ function Dados({ value, setValue }) {
             <option value="" disabled>
               Selecione
             </option>
-            {hours.map((hour, index) => (
-              <option key={index} value={hour}>
-                {hour}
+            {!value.horario ? (
+              hours.map((hour, index) => (
+                <option key={index} value={hour}>
+                  {hour}
+                </option>
+              ))
+            ) : (
+              <option key={value.horario} value={value.horario}>
+                {value.horario}
               </option>
-            ))}
-            <option name="extra" onChange={handleHorarioChange}>
-              EXTRA
-            </option>
+            )}
+            {!value.horario && (
+              <option name="extra" onChange={handleHorarioChange}>
+                EXTRA
+              </option>
+            )}
           </select>
         </div>
       </div>

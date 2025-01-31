@@ -1,11 +1,11 @@
 import DadosConsultar from "../../componentes/Operacao/Consultar/dadosConsulta";
 import Resultados from "../../componentes/Operacao/Consultar/resultados";
 
-function Consultar() {
+function Consultar({ dados }) {
   return (
     <>
       <DadosConsultar />
-      <Resultados />
+      <Resultados dados={dados} />
     </>
   );
 }

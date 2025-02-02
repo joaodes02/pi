@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-function Buttons({ limpar, enviar }) {
+function Buttons({ limpar, inserir }) {
   const navigate = useNavigate();
   return (
     <>
       <div className="flex flex-col justify-center space-y-2">
         <button
-          onClick={enviar}
+          onClick={inserir}
           className="font-bold hover:scale-105 w-[200px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
         >
           Enviar

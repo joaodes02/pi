@@ -36,6 +36,8 @@ function App() {
         ligaInf: "0.9",
         mediaSup: "2,0",
         mediaInf: "2,0",
+        dispSup: "0.0",
+        dispInf: "0.0",
       },
       dureza: { esq: 65, centro: 65, dir: 65 },
       oil: {
@@ -72,6 +74,8 @@ function App() {
         ligaInf: "0.9",
         mediaSup: "2,0",
         mediaInf: "2,0",
+        dispSup: "0.0",
+        dispInf: "0.0",
       },
       dureza: { esq: 65, centro: 65, dir: 65 },
       oil: {
@@ -108,6 +112,8 @@ function App() {
         ligaInf: "0.9",
         mediaSup: "2,0",
         mediaInf: "2,0",
+        dispSup: "0.0",
+        dispInf: "0.0",
       },
       dureza: { esq: 65, centro: 65, dir: 65 },
       oil: {

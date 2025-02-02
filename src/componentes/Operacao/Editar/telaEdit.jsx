@@ -72,7 +72,13 @@ function TelaEdit({ setIdDados, dados, setDados }) {
                       }}
                     />
                   </div>
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td
+                    className={`border border-gray-300 px-4 py-2 ${
+                      info.dados.horario !== "EXTRA"
+                        ? "bg-slate-400"
+                        : "bg-orange-300"
+                    }`}
+                  >
                     {info.dados.horario}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">

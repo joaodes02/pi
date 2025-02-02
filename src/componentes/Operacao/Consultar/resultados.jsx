@@ -59,13 +59,19 @@ function Resultados({ dados }) {
             <tbody>
               {dadosFiltrados.map((info) => (
                 <tr key={info.id} className="hover:bg-gray-50">
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td
+                    className={`border border-gray-300 px-4 py-2 ${
+                      info.dados.horario != "EXTRA"
+                        ? "bg-slate-400"
+                        : "bg-orange-400"
+                    }`}
+                  >
                     {info.dados.horario}
                   </td>
                   <td className="border border-gray-300 px-4 py-2">
                     {info.dados.item}-{info.dados.bobina}
                   </td>
-                  <td className="font-bold border-2 border-gray-300 px-4 py-2">
+                  <td className="bg-blue-200 font-bold border-2 border-gray-300 px-4 py-2">
                     {info.nominal.superior}
                   </td>
                   <td className="justify-center items-center border border-gray-300">
@@ -87,7 +93,7 @@ function Resultados({ dados }) {
                       </td>
                     </td>
                   </td>
-                  <td className="font-bold border-2 border-gray-300 px-4 py-2">
+                  <td className="bg-blue-200 font-bold border-2 border-gray-300 px-4 py-2">
                     {info.nominal.inferior}
                   </td>
                   <td className="justify-center items-center border border-gray-300">

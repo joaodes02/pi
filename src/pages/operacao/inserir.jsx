@@ -13,17 +13,58 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
     return dado;
   }
 
-  // Definindo o estado para os componentes
+  const inserir = () => {
+    const novoDado = {
+      id: dadosArray.length + 1,
+      dados: {
+        equipamento: dados.equipamento,
+        horario: dados.horario,
+        item: dados.item,
+        bobina: dados.bobina,
+      },
+      nominal: { superior: nominal.superior, inferior: nominal.inferior },
+      rev: {
+        esqSup: rev.esqSup,
+        centroSup: rev.centroSup,
+        dirSup: rev.dirSup,
+        esqInf: rev.esqInf,
+        centroInf: rev.centroInf,
+        dirInf: rev.dirInf,
+        ligaSup: rev.ligaSup,
+        ligaInf: rev.ligaInf,
+        mediaSup: rev.mediaSup,
+        mediaInf: rev.mediaInf,
+        dispSup: rev.dispSup,
+        dispInf: rev.dispInf,
+      },
+      dureza: {
+        esq: dureza.esq,
+        centro: dureza.centro,
+        dir: dureza.dir,
+      },
+      oil: {
+        esqSup: oil.esqSup,
+        centroSup: oil.centroSup,
+        dirSup: oil.dirSup,
+        mediaSup: oil.mediaSup,
+        esqInf: oil.esqInf,
+        centroInf: oil.centroInf,
+        dirInf: oil.dirInf,
+        mediaInf: oil.mediaInf,
+      },
+    };
+    setDadosArray((prevDados) => [...prevDados, novoDado]);
+    handleLimpar();
+  };
+
   const [dadoEdit, setDadoEdit] = useState(recuperaDado());
   const [dados, setDados] = useState(idDados ? dadoEdit.dados : "");
   const [nominal, setNominal] = useState(idDados ? dadoEdit.nominal : "");
-  const [rev, setRev] = useState(idDados ? dadoEdit.rev : "");
+  const [rev, setRev] = useState(idDados ? dadoEdit?.rev : "");
   const [dureza, setDureza] = useState(idDados ? dadoEdit.dureza : "");
   const [oil, setOil] = useState(idDados ? dadoEdit.oil : "");
 
-  // Função para limpar os campos
   const handleLimpar = () => {
-    // Limpa todos os estados de uma vez
     setDados({
       equipamento: "",
       horario: "",
@@ -42,6 +83,8 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
       ligaInf: "",
       mediaSup: "",
       mediaInf: "",
+      dispSup: "",
+      dispInf: "",
     });
     setDureza({ esq: "", centro: "", dir: "" });
     setOil({
@@ -80,7 +123,7 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
         </div>
       </div>
       <div className="absolute top-1/2 right-0 transform -translate-y-1/2 mr-[300px]">
-        <Buttons limpar={handleLimpar} />
+        <Buttons inserir={inserir} limpar={handleLimpar} />
       </div>
     </div>
   );

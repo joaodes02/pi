@@ -110,7 +110,9 @@ function Menu() {
             </div>
           </div>
           <div className="border-2 p-4 border-gray-400 mt-5 flex flex-col items-center h-[200px] w-[500px] justify-center">
-            <h2 className="text-3xl font-bold italic font-light">Balanço:</h2>
+            <h2 className="text-3xl font-bold italic font-light">
+              Estatísticas:
+            </h2>
             <div className="mt-5 grid grid-cols-2 gap-4 justify-items-center">
               <div className="flex">
                 <img className="h-12" src={inserirIMG} alt="inserir" />

@@ -75,16 +75,6 @@ function DadosConsulta({ value }) {
                 className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               />
             </div>
-            <div className="flex flex-col text-center">
-              <label className="text-sm font-medium text-gray-600">
-                Filtro
-              </label>
-              <input
-                type="search"
-                placeholder="Item...  "
-                className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              />
-            </div>
             <div className="space-y-3 flex flex-col text-center">
               <button className="font-bold hover:scale-105 w-[100px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300">
                 Consultar

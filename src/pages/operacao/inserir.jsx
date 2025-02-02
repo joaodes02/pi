@@ -61,7 +61,12 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
       <h1 className="text-3xl pb-4 font-bold">Inclusão de resultado:</h1>
       <div className="p-3 flex flex-col border-4 border-indigo-200 bg-gray-200">
         <div className="p-2 border border-gray-400 mt-2 w-[800px]">
-          <Dados idDados={idDados} value={dados} setValue={setDados} />
+          <Dados
+            setIdDados={setIdDados}
+            idDados={idDados}
+            value={dados}
+            setValue={setDados}
+          />
         </div>
         <div className="border border-gray-400 mt-2 w-[800px]">
           <Nominal value={nominal} setValue={setNominal} />

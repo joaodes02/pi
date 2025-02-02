@@ -1,6 +1,31 @@
+import { useState } from "react";
+
 function Resultados({ dados }) {
+  const [pesquisa, setPesquisa] = useState("");
+
+  // Função para filtrar os dados com base na pesquisa
+  const dadosFiltrados = dados.filter((info) => {
+    const termoPesquisa = pesquisa.toLowerCase();
+    return `${info.dados.item}-${info.dados.bobina}`
+      .toLowerCase()
+      .includes(termoPesquisa);
+  });
+
   return (
     <>
+      <div className="intems-center justify-center flex p-4">
+        <div className="text-sm font-medium text-gray-600 flex-col flex text-center border-2 p-2 border-gray-200 ">
+          <label className="text-sm font-medium text-gray-600">Pesquisa:</label>
+          <input
+            type="text"
+            placeholder="Item-bobina..."
+            value={pesquisa}
+            onChange={(e) => setPesquisa(e.target.value)}
+            className="p-2 border border-gray-300 rounded"
+          />
+        </div>
+      </div>
+
       <div className="p-1 flex justify-center">
         <div className="overflow-x-auto">
           <table className=" border-separate items-center text-center table-auto border-collapse border border-gray-300 w-[1500px]">
@@ -32,7 +57,7 @@ function Resultados({ dados }) {
               </tr>
             </thead>
             <tbody>
-              {dados.map((info) => (
+              {dadosFiltrados.map((info) => (
                 <tr key={info.id} className="hover:bg-gray-50">
                   <td className="border border-gray-300 px-4 py-2">
                     {info.dados.horario}

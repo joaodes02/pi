@@ -17,7 +17,7 @@ function App() {
       id: 1,
       dados: {
         equipamento: "LEE5",
-        horario: "15:00:00",
+        horario: "15:00",
         item: "E40090",
         bobina: "0909",
       },
@@ -53,8 +53,8 @@ function App() {
       id: 2,
       dados: {
         equipamento: "LEE5",
-        horario: "15:00:00",
-        item: "E40090",
+        horario: "15:00",
+        item: "E60090",
         bobina: "0909",
       },
       nominal: {
@@ -89,8 +89,8 @@ function App() {
       id: 3,
       dados: {
         equipamento: "LEE5",
-        horario: "15:00:00",
-        item: "E40090",
+        horario: "15:00",
+        item: "e70090",
         bobina: "0909",
       },
       nominal: {

@@ -1,4 +1,15 @@
-function Dados({ idDados, value, setValue }) {
+import { useState, useEffect } from "react";
+
+function Dados({ value, setValue }) {
+  const [editar] = useState(value.horario ? true : false);
+
+  // const [exemplo, setExemplo] = useState("");
+
+  // useEffect(() => {
+  //   console.log(exemplo);
+  //   setExemplo("Jade!");
+  // }, [exemplo, value]);
+
   // Função para gerar horários
   const hours = Array.from({ length: 24 }, (_, i) => {
     const hour = String(i).padStart(2, "0");
@@ -45,17 +56,11 @@ function Dados({ idDados, value, setValue }) {
             <option value="" disabled>
               Selecione
             </option>
-            {!value.equipamento ? (
-              equipamentos.map((equipamento, index) => (
-                <option key={index} value={equipamento}>
-                  {equipamento}
-                </option>
-              ))
-            ) : (
-              <option key={value.equipamento} value={value.equipamento}>
-                {value.equipamento}
+            {equipamentos.map((equipamento, index) => (
+              <option key={index} value={equipamento}>
+                {equipamento}
               </option>
-            )}
+            ))}
           </select>
         </div>
 
@@ -71,7 +76,7 @@ function Dados({ idDados, value, setValue }) {
             <option value="" disabled>
               Selecione
             </option>
-            {!value.horario ? (
+            {!editar ? (
               hours.map((hour, index) => (
                 <option key={index} value={hour}>
                   {hour}
@@ -82,7 +87,7 @@ function Dados({ idDados, value, setValue }) {
                 {value.horario}
               </option>
             )}
-            {!value.horario && (
+            {!editar && (
               <option name="extra" onChange={handleHorarioChange}>
                 EXTRA
               </option>

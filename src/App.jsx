@@ -4,8 +4,8 @@ import Menu from "./pages/menu/menu";
 import Inserir from "./pages/operacao/inserir";
 import Consultar from "./pages/operacao/consultar";
 import Editar from "./pages/operacao/editar";
-import Tracao from "./pages/operacao/tracao";
 import InserirProcesso from "./pages/tecnico/inserirProcesso";
+import Tracion from "./pages/operacao/Tracion";
 import "./App.css";
 import { useState } from "react";
 
@@ -151,7 +151,8 @@ function App() {
           <Editar setIdDados={setIdDados} setDados={setDados} dados={dados} />
         }
       />
-      <Route path="/tracion" element={<Tracao />} />
+      <Route path="/ensaioMecanico" element={<Tracion />} />
+
       <Route path="/inserirTec" element={<InserirProcesso />} />
     </Routes>
   );

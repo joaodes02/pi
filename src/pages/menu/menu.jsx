@@ -40,7 +40,7 @@ function Menu() {
                 <img className="h-12" src={analisePNG} alt="excluir" />
                 <button
                   onClick={(e) => {
-                    navigate("/tracion");
+                    navigate("/ensaioMecanico");
                   }}
                   className="font-bold ml-3 hover:scale-105 w-[200px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
                 >

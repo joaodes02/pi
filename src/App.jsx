@@ -129,6 +129,8 @@ function App() {
     },
   ]);
 
+  const [value, setValue] = useState({ tempera: "" });
+
   return (
     <Routes>
       <Route path="/" element={<Login />} />
@@ -151,7 +153,10 @@ function App() {
           <Editar setIdDados={setIdDados} setDados={setDados} dados={dados} />
         }
       />
-      <Route path="/ensaioMecanico" element={<Tracion />} />
+      <Route
+        path="/ensaioMecanico"
+        element={<Tracion value={value} setValue={setValue} />}
+      />
 
       <Route path="/inserirTec" element={<InserirProcesso />} />
     </Routes>

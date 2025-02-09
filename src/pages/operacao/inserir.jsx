@@ -5,6 +5,8 @@ import Rev from "../../componentes/Operacao/Inserir/rev";
 import Dados from "../../componentes/Operacao/Inserir/dados";
 import Nominal from "../../componentes/Operacao/Inserir/nominal";
 import Oil from "../../componentes/Operacao/Inserir/oil";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
   function recuperaDado() {
@@ -12,10 +14,11 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
     setIdDados(false);
     return dado;
   }
-
-  const inserir = () => {
+  const navigate = useNavigate();
+  const inserir = async () => {
     const novoDado = {
-      id: dadosArray.length + 1,
+      toc: new Date(),
+      tom: new Date(),
       dados: {
         equipamento: dados.equipamento,
         horario: dados.horario,
@@ -53,6 +56,17 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
         mediaInf: oil.mediaInf,
       },
     };
+
+    // Enviar a requisição POST utilizando o axios
+    const response = await axios.post("http://localhost:3322/operacao/insert", {
+      novoDado: novoDado,
+    });
+
+    // Verifica se a resposta tem status 200
+    if (response.status === 200) {
+      navigate("/menu");
+    }
+
     setDadosArray((prevDados) => [...prevDados, novoDado]);
     handleLimpar();
   };

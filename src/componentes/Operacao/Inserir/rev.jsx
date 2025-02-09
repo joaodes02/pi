@@ -114,6 +114,7 @@ function Rev({ value, setValue }) {
               tabIndex="13"
               name="ligaSup"
               value={value.ligaSup}
+              onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
               type="text"
             />
@@ -192,6 +193,7 @@ function Rev({ value, setValue }) {
               tabIndex="14"
               name="ligaInf"
               value={value.ligaInf}
+              onChange={handleChange}
               className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
               type="text"
             />

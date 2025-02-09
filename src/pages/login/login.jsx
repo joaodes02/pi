@@ -1,6 +1,8 @@
 import { useState } from "react";
 import loginIMG from "../../assets/img/csn.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Importa a biblioteca axios
+import Cookies from "js-cookie";
 
 function Login() {
   const navigate = useNavigate();
@@ -8,12 +10,31 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username === "labfm" && password === "labgee") {
-      navigate("/menu");
-    } else {
-      setError("Usuário ou senha invalidos");
+
+    try {
+      //enviar req utilizando axios
+      const response = await axios.post("http://localhost:3322/login", {
+        matricula: username, //enviar o nome de user
+        senha: password,
+      });
+
+      if (response.status === 200) {
+        const { token } = response.data;
+
+        // Armazena o token no cookie por 8 horas (mesmo tempo do backend)
+        Cookies.set("token", token, { expires: 8 / 24 });
+
+        navigate("/menu");
+      }
+    } catch (err) {
+      if (err.response) {
+        // se a resposata da API tiver uim error
+        setError(err.response.data.error || "Usuário ou senha inválidos");
+      } else {
+        setError("Erro na conexão com o servidor");
+      }
     }
   };
 

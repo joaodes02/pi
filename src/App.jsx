@@ -7,158 +7,75 @@ import Editar from "./pages/operacao/editar";
 import InserirProcesso from "./pages/tecnico/inserirProcesso";
 import Tracion from "./pages/operacao/Tracion";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ProtectedRoute from "./componentes/ProtectedRoutes/ProtectedRoutes";
+import { fetchData } from "./hooks/fetchData";
 
 function App() {
   const [idDados, setIdDados] = useState(false);
+  const [value, setValue] = useState({});
 
-  const [dados, setDados] = useState([
-    {
-      id: 1,
-      dados: {
-        equipamento: "LEE5",
-        horario: "15:00",
-        item: "E40090",
-        bobina: "0909",
-      },
-      nominal: {
-        superior: "2.0",
-        inferior: "2.2",
-      },
-      rev: {
-        esqSup: "2.0",
-        centroSup: "2.0",
-        dirSup: "2.0",
-        esqInf: "2.0",
-        centroInf: "2.0",
-        dirInf: "2.0",
-        ligaSup: "1.0",
-        ligaInf: "0.9",
-        mediaSup: "2,0",
-        mediaInf: "2,0",
-        dispSup: "0.0",
-        dispInf: "0.0",
-      },
-      dureza: { esq: 65, centro: 65, dir: 65 },
-      oil: {
-        esqSup: "3.3",
-        centroSup: "3.3",
-        dirSup: "3.3",
-        mediaSup: "3.3",
-        esqInf: "3.3",
-        centroInf: "3.3",
-        dirInf: "3.3",
-        mediaInf: "3.3",
-      },
-    },
-    {
-      id: 2,
-      dados: {
-        equipamento: "LEE5",
-        horario: "15:00",
-        item: "E60090",
-        bobina: "0909",
-      },
-      nominal: {
-        superior: "2.0",
-        inferior: "2.2",
-      },
-      rev: {
-        esqSup: "2.0",
-        centroSup: "2.0",
-        dirSup: "2.0",
-        esqInf: "2.0",
-        centroInf: "2.0",
-        dirInf: "2.0",
-        ligaSup: "1.0",
-        ligaInf: "0.9",
-        mediaSup: "2,0",
-        mediaInf: "2,0",
-        dispSup: "0.0",
-        dispInf: "0.0",
-      },
-      dureza: { esq: 65, centro: 65, dir: 65 },
-      oil: {
-        esqSup: "3.3",
-        centroSup: "3.3",
-        dirSup: "3.3",
-        mediaSup: "3.3",
-        esqInf: "3.3",
-        centroInf: "3.3",
-        dirInf: "3.3",
-        mediaInf: "3.3",
-      },
-    },
-    {
-      id: 3,
-      dados: {
-        equipamento: "LEE5",
-        horario: "15:00",
-        item: "e70090",
-        bobina: "0909",
-      },
-      nominal: {
-        superior: "2.0",
-        inferior: "2.2",
-      },
-      rev: {
-        esqSup: "2.0",
-        centroSup: "2.0",
-        dirSup: "2.0",
-        esqInf: "2.0",
-        centroInf: "2.0",
-        dirInf: "2.0",
-        ligaSup: "1.0",
-        ligaInf: "0.9",
-        mediaSup: "2,0",
-        mediaInf: "2,0",
-        dispSup: "0.0",
-        dispInf: "0.0",
-      },
-      dureza: { esq: 65, centro: 65, dir: 65 },
-      oil: {
-        esqSup: "3.3",
-        centroSup: "3.3",
-        dirSup: "3.3",
-        mediaSup: "3.3",
-        esqInf: "3.3",
-        centroInf: "3.3",
-        dirInf: "3.3",
-        mediaInf: "3.3",
-      },
-    },
-  ]);
+  const [dados, setDados] = useState([]);
 
-  const [value, setValue] = useState({ tempera: "" });
-
+  useEffect(() => {
+    fetchData(setDados);
+  }, []);
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/menu" element={<Menu />} />
+      {/* Rota pública */}
+      <Route path="/" element={<ProtectedRoute element={<Login />} />} />
+
+      {/* Rotas protegidas */}
+      <Route path="/menu" element={<ProtectedRoute element={<Menu />} />} />
       <Route
         path="/inserir"
         element={
-          <Inserir
-            dadosArray={dados}
-            setIdDados={setIdDados}
-            idDados={idDados}
-            setDadosArray={setDados}
+          <ProtectedRoute
+            element={
+              <Inserir
+                dadosArray={dados}
+                setIdDados={setIdDados}
+                idDados={idDados}
+                setDadosArray={setDados}
+              />
+            }
           />
         }
       />
-      <Route path="/consulta" element={<Consultar dados={dados} />} />
+      <Route
+        path="/consulta"
+        element={
+          <ProtectedRoute
+            element={<Consultar dados={dados} setDados={setDados} />}
+          />
+        }
+      />
       <Route
         path="/editar"
         element={
-          <Editar setIdDados={setIdDados} setDados={setDados} dados={dados} />
+          <ProtectedRoute
+            element={
+              <Editar
+                setIdDados={setIdDados}
+                setDados={setDados}
+                dados={dados}
+              />
+            }
+          />
         }
       />
       <Route
         path="/ensaioMecanico"
-        element={<Tracion value={value} setValue={setValue} />}
+        element={
+          <ProtectedRoute
+            element={<Tracion value={value} setValue={setValue} />}
+          />
+        }
       />
-
-      <Route path="/inserirTec" element={<InserirProcesso />} />
+      <Route
+        path="/inserirTec"
+        element={<ProtectedRoute element={<InserirProcesso />} />}
+      />
     </Routes>
   );
 }

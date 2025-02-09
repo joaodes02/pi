@@ -3,6 +3,7 @@ import loginIMG from "../../assets/img/csn.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Importa a biblioteca axios
 import Cookies from "js-cookie";
+import fundoIMG from "../../assets/img/fmfound.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -39,8 +40,15 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-96">
+    <div
+      className="flex items-center justify-center min-h-screen bg-gray-100"
+      style={{
+        backgroundImage: `url(${fundoIMG})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="bg-white/80 shadow-lg rounded-lg p-8 w-96">
         <h1 className="font-bold text-3xl text-center mb-6 text-gray-800">
           Laboratório FM
         </h1>

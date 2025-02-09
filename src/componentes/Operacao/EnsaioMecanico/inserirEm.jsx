@@ -1,19 +1,27 @@
-import Buttons from "../Inserir/buttons";
+import { useNavigate } from "react-router-dom";
 
 function InserirEm({ value, setValue }) {
+  const navigate = useNavigate();
   const temperas = [
     "TH390",
     "TH415",
     "TH435",
     "TH390",
+    "TH550",
     "DR550",
     "DR620",
     "DR8",
     "T4",
+    "TS275",
+    "TS245",
+    "EXPERIÊNCIA",
   ];
+
   const handleTemperaChange = (e) => {
     setValue((prev) => ({ ...prev, tempera: e.target.value }));
   };
+
+  const isDisabled = !value.tempera; // Bloqueia os inputs se "tempera" não estiver selecionado
 
   return (
     <>
@@ -22,73 +30,6 @@ function InserirEm({ value, setValue }) {
           Insira os resultados do Ensaio Mecânico:
         </h1>
         <div className="border-2 border-gray-300 mt-5 flex p-2 flex-wrap max-w-[800px] ">
-          <div className="p-2 flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">Item:</label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-              maxLength={6}
-            />
-          </div>
-          <div className="p-2 flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">Bobina:</label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-              maxLength={4}
-            />
-          </div>
-          <div className="p-2  flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">
-              Espessura:
-            </label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-              maxLength={5}
-            />
-          </div>
-          <div className="p-2  flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">
-              Escoamento:
-            </label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-            />
-          </div>
-          <div className="p-2  flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">
-              Resistência:
-            </label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-            />
-          </div>
-          <div className="p-2 flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">
-              Alongamento:
-            </label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-            />
-          </div>
-          <div className="p-2 flex  text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">R:</label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-            />
-          </div>
-          <div className="p-2 flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">N:</label>
-            <input
-              className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              type="text"
-            />
-          </div>
           <div className="p-2 flex text-center flex-col">
             <label className="text-sm font-medium text-gray-600">
               Tempera:
@@ -108,6 +49,44 @@ function InserirEm({ value, setValue }) {
               ))}
             </select>
           </div>
+          {[
+            "Item",
+            "Bobina",
+            "Espessura",
+            "LE",
+            "LR",
+            "Alongamento",
+            "R",
+            "N",
+          ].map((label, index) => (
+            <div key={index} className="p-2 flex text-center flex-col">
+              <label className="text-sm font-medium text-gray-600">
+                {label}:
+              </label>
+              <input
+                className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+                type="text"
+                disabled={isDisabled} // Desativa os inputs até que uma "Tempera" seja selecionada
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex space-x-4 mt-5">
+          <button className="font-bold hover:scale-105 w-[150px] h-[40px] bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-500">
+            Inserir
+          </button>
+          <button
+            onClick={() => navigate("/menu")}
+            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-500"
+          >
+            Home
+          </button>
+          <button
+            onClick={() => navigate("/menu")}
+            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition duration-500"
+          >
+            Limpar
+          </button>
         </div>
       </div>
     </>

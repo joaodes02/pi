@@ -3,6 +3,7 @@ import editarPNG from "../../assets/img/editar.png";
 import consultarIMG from "../../assets/img/consultar.png";
 import { useNavigate } from "react-router-dom";
 import analisePNG from "../../assets/img/analise.png";
+import LogoutButton from "../../componentes/Menu/LogoutButton";
 
 function Menu() {
   const navigate = useNavigate();
@@ -210,6 +211,9 @@ function Menu() {
                 </button>
               </div>
             </div>
+          </div>
+          <div className="mt-5">
+            <LogoutButton />
           </div>
         </div>
       </div>

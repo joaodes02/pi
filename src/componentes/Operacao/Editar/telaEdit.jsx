@@ -2,6 +2,7 @@ import DadosConsulta from "../../Operacao/Consultar/dadosConsulta";
 import editIMG from "../../../assets/img/editar.png";
 import deleteIMG from "../../../assets/img/excluir.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function TelaEdit({ setIdDados, dados, setDados }) {
   const navigate = useNavigate();
@@ -11,9 +12,21 @@ function TelaEdit({ setIdDados, dados, setDados }) {
       navigate("/inserir");
     }
   }
-  function clickDelete(e, info) {
-    if (window.confirm(`Deseja mesmo excluir?`)) {
-      setDados(dados.filter((d) => d.id !== info.id));
+  async function clickDelete(e, info) {
+    if (window.confirm("Deseja mesmo excluir? ")) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:3322/operacao/delete/${info.id}`
+        );
+        if (response.status === 200) {
+          setDados((prevDados) => prevDados.filter((d) => d.id !== info.id));
+        } else {
+          throw new Error("Error ao excluir operação!");
+        }
+      } catch (error) {
+        console.error("Erro ao excluir", error);
+        alert("Erro ao exlcuir operação!");
+      }
     }
   }
 

@@ -202,7 +202,7 @@ function Estanhamento({ value, setValue }) {
             </div>
             <div className="text-center flex flex-col">
               <label className="text-sm font-medium text-gray-600 font-bold">
-                T.Qímico
+                T.Químico
               </label>
               <input
                 name="tq"

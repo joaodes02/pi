@@ -109,7 +109,7 @@ function Menu() {
                 <img className="h-12" src={consultarIMG} alt="consultar" />
                 <button
                   onClick={(e) => {
-                    navigate("/consulta");
+                    navigate("/consultaTec");
                   }}
                   className="font-bold ml-3 hover:scale-105 w-[200px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
                 >

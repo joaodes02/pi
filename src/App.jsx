@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import ProtectedRoute from "./componentes/ProtectedRoutes/ProtectedRoutes";
 import { fetchData } from "./hooks/fetchData";
 import ResultadosEm from "./componentes/Operacao/EnsaioMecanico/resultadosEm";
+import ConsultarTec from "./pages/tecnico/consultarTec";
 
 function App() {
   const [idDados, setIdDados] = useState(false);
@@ -79,6 +80,10 @@ function App() {
       <Route
         path="/resultadosEm"
         element={<ProtectedRoute element={<ResultadosEm />} />}
+      />
+      <Route
+        path="/consultaTec"
+        element={<ProtectedRoute element={<ConsultarTec />} />}
       />
     </Routes>
   );

@@ -1,6 +1,34 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function InserirEm({ value, setValue }) {
+  const valorInitialTracion = {
+    tempera: "",
+    Item: "",
+    Bobina: "",
+    Espessura: "",
+    LE: "",
+    LR: "",
+    Alongamento: "",
+    R: "",
+    N: "",
+  };
+  const [dadosTracion, setDadosTracion] = useState(valorInitialTracion);
+  const handleLimpar = () => {
+    setDadosTracion(valorInitialTracion);
+    setValue((prev) => ({
+      ...prev,
+      tempera: "",
+      Item: "",
+      Bobina: "",
+      Espessura: "",
+      LE: "",
+      LR: "",
+      Alongamento: "",
+      R: "",
+      N: "",
+    }));
+  };
   const navigate = useNavigate();
   const temperas = [
     "TH390",
@@ -35,6 +63,7 @@ function InserirEm({ value, setValue }) {
               Tempera:
             </label>
             <select
+              name="tempera"
               value={value.tempera || ""}
               onChange={handleTemperaChange}
               className="w-[130px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
@@ -64,9 +93,17 @@ function InserirEm({ value, setValue }) {
                 {label}:
               </label>
               <input
+                name={label}
+                value={dadosTracion[label] || ""} // Garante que os valores sejam controlados
+                onChange={(e) =>
+                  setDadosTracion((prev) => ({
+                    ...prev,
+                    [label]: e.target.value,
+                  }))
+                }
                 className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
                 type="text"
-                disabled={isDisabled} // Desativa os inputs até que uma "Tempera" seja selecionada
+                disabled={isDisabled}
               />
             </div>
           ))}
@@ -76,16 +113,22 @@ function InserirEm({ value, setValue }) {
             Inserir
           </button>
           <button
+            onClick={handleLimpar}
+            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition duration-500"
+          >
+            Limpar
+          </button>
+          <button
+            onClick={() => navigate("/resultadosEm")}
+            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-orange-400 text-white py-2 rounded-md hover:bg-orange-700 transition duration-500"
+          >
+            Resultados
+          </button>
+          <button
             onClick={() => navigate("/menu")}
             className="font-bold hover:scale-105 w-[150px] h-[40px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-500"
           >
             Home
-          </button>
-          <button
-            onClick={() => navigate("/menu")}
-            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition duration-500"
-          >
-            Limpar
           </button>
         </div>
       </div>

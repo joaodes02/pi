@@ -12,8 +12,8 @@ function ll2({ value, setValue }) {
               Perci:
             </label>
             <input
-              name="alcalina"
-              value={value.alcalina}
+              name="perci"
+              value={value.perci}
               onChange={handleChange}
               maxLength={4}
               type="text"
@@ -26,8 +26,8 @@ function ll2({ value, setValue }) {
                 Tioureia:
               </label>
               <input
-                name="h2so4C"
-                value={value.h2so4C}
+                name="tioureia"
+                value={value.tioureia}
                 onChange={handleChange}
                 maxLength={4}
                 type="text"

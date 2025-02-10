@@ -1,10 +1,32 @@
 import React, { useState, useEffect } from "react";
 import Cromado from "./cromado";
 import Estanhamento from "./estanhamento";
+import GDL from "./gdl";
+import LLE2 from "./limpeza";
+import gdl from "./gdl";
+import ll2 from "./limpeza";
 
 function Dados({ value, setValue }) {
   const { estanhamento } = value;
   const { cromado } = value;
+  const handleLl2Change = (updatedValues) => {
+    setValue((prev) => ({
+      ...prev,
+      ll2: {
+        ...prev.ll2,
+        ...updatedValues,
+      },
+    }));
+  };
+  const handleGdlChange = (updatedValues) => {
+    setValue((prev) => ({
+      ...prev,
+      gdl: {
+        ...prev.gdl,
+        ...updatedValues,
+      },
+    }));
+  };
   const handleCromadoChange = (updatedValues) => {
     setValue((prev) => ({
       ...prev,
@@ -69,6 +91,8 @@ function Dados({ value, setValue }) {
                 {equipamento}
               </option>
             ))}
+            <option value="LLE#2">LLE#2</option>
+            <option value="GDL">GDL</option>
           </select>
         </div>
 
@@ -101,10 +125,28 @@ function Dados({ value, setValue }) {
       <div>
         {equipamentoSelecionado === "LEE4" ? (
           <Cromado value={cromado} setValue={handleCromadoChange} />
-        ) : equipamentoSelecionado ? (
+        ) : equipamentoSelecionado === "LEE5" ? (
           <Estanhamento
             value={estanhamento}
             setValue={handleEstanhamentoChange}
+            equipamento={equipamentoSelecionado}
+          />
+        ) : equipamentoSelecionado === "LEE6" ? (
+          <Estanhamento
+            value={estanhamento}
+            setValue={handleEstanhamentoChange}
+            equipamento={equipamentoSelecionado}
+          />
+        ) : equipamentoSelecionado === "GDL" ? (
+          <GDL
+            value={gdl}
+            setValue={handleGdlChange}
+            equipamento={equipamentoSelecionado}
+          />
+        ) : equipamentoSelecionado === "LLE#2" ? (
+          <LLE2
+            value={ll2}
+            setValue={handleLl2Change}
             equipamento={equipamentoSelecionado}
           />
         ) : null}

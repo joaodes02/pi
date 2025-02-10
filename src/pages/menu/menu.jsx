@@ -4,13 +4,21 @@ import consultarIMG from "../../assets/img/consultar.png";
 import { useNavigate } from "react-router-dom";
 import analisePNG from "../../assets/img/analise.png";
 import LogoutButton from "../../componentes/Menu/LogoutButton";
+import csnIMG from "../../assets/img/csnIMG.png";
 
 function Menu() {
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="items-center flex justify-center min-h-screen">
+      <div
+        className="items-center flex justify-center min-h-screen"
+        style={{
+          backgroundImage: `url(${csnIMG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+        }}
+      >
         <div className="flex flex-wrap max-w-[1200px] items-center justify-center gap-1">
           <div className="border-2 p-4 border-gray-400 mt-5 flex flex-col items-center h-[200px] w-[500px] mt-5 flex flex-col items-center justify-center">
             <h2 className="font-light text-3xl font-bold italic">Operação:</h2>

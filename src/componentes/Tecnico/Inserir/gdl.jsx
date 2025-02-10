@@ -9,11 +9,11 @@ function gdl({ value, setValue }) {
         <div className="pb-2 flex space-x-2 ">
           <div className="text-center border-2 border-gray-400 p-2 flex flex-col">
             <label className="text-sm font-medium text-gray-600 font-bold">
-              GDL
+              Cromo:
             </label>
             <input
-              name="alcalina"
-              value={value.alcalina}
+              name="cromo"
+              value={value.cromo}
               onChange={handleChange}
               maxLength={4}
               type="text"
@@ -23,11 +23,11 @@ function gdl({ value, setValue }) {
           <div className="flex space-x-2 border-2 border-gray-400 p-2">
             <div className="text-center flex flex-col">
               <label className="text-sm font-medium text-gray-600 font-bold">
-                GDL
+                Cr+3:
               </label>
               <input
-                name="h2so4C"
-                value={value.h2so4C}
+                name="cr3"
+                value={value.cr3}
                 onChange={handleChange}
                 maxLength={4}
                 type="text"
@@ -38,11 +38,11 @@ function gdl({ value, setValue }) {
           <div className="flex space-x-2 border-2 border-gray-400 p-2">
             <div className="text-center flex flex-col">
               <label className="text-sm font-medium text-gray-600 font-bold">
-                GDL
+                Fluoreto:
               </label>
               <input
-                name="h2so4C"
-                value={value.h2so4C}
+                name="fluoreto"
+                value={value.fluoreto}
                 onChange={handleChange}
                 maxLength={4}
                 type="text"
@@ -53,11 +53,11 @@ function gdl({ value, setValue }) {
           <div className="flex space-x-2 border-2 border-gray-400 p-2">
             <div className="text-center flex flex-col">
               <label className="text-sm font-medium text-gray-600 font-bold">
-                GDL
+                So4:
               </label>
               <input
-                name="h2so4C"
-                value={value.h2so4C}
+                name="so4"
+                value={value.so4}
                 onChange={handleChange}
                 maxLength={4}
                 type="text"

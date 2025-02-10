@@ -3,12 +3,12 @@ import Cromado from "./cromado";
 import Estanhamento from "./estanhamento";
 import GDL from "./gdl";
 import LLE2 from "./limpeza";
-import gdl from "./gdl";
-import ll2 from "./limpeza";
 
 function Dados({ value, setValue }) {
   const { estanhamento } = value;
   const { cromado } = value;
+  const { gdl } = value;
+  const { ll2 } = value;
   const handleLl2Change = (updatedValues) => {
     setValue((prev) => ({
       ...prev,

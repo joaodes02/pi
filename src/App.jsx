@@ -14,7 +14,6 @@ import { fetchData } from "./hooks/fetchData";
 function App() {
   const [idDados, setIdDados] = useState(false);
   const [value, setValue] = useState({});
-
   const [dados, setDados] = useState([]);
 
   useEffect(() => {

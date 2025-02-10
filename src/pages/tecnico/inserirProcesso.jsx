@@ -37,6 +37,16 @@ function InserirProcesso() {
       fluoretoTq: "",
       poco: "",
     },
+    gdl: {
+      cromo: "",
+      fluoreto: "",
+      cr3: "",
+      so4: "",
+    },
+    ll2: {
+      perci: "",
+      tioureia: "",
+    },
   };
 
   const [dados, setDados] = useState(stateInitial);

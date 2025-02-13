@@ -97,91 +97,100 @@ function TelaEdit({ setIdDados, dados, setDados }) {
                   <td className="border border-gray-300 px-4 py-2">
                     {info.dados.item}-{info.dados.bobina}
                   </td>
-                  <td className="font-bold border-2 border-gray-300 px-4 py-2">
-                    {info.nominal.superior}
+                  <td className="bg-blue-200 font-bold border-2 border-gray-300 px-4 py-2">
+                    {Number(info.nominal.superior)
+                      ?.toFixed(1)
+                      .replace(".", ",")}
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.rev.esqSup}
+                        {Number(info.rev.esqSup)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.rev.centroSup}
+                        {Number(info.rev.centroSup)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.rev.dirSup}
+                        {Number(info.rev.dirSup)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.rev.mediaSup}
+                        {Number(info.rev.mediaSup)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
                       <td className="border-2 border-blue-400 p-2">
-                        {info.rev.ligaSup}
+                        {Number(info.rev.ligaSup)?.toFixed(1).replace(".", ",")}
                       </td>
                     </td>
                   </td>
-                  <td className="font-bold border-2 border-gray-300 px-4 py-2">
-                    {info.nominal.inferior}
+                  <td className="bg-blue-200 font-bold border-2 border-gray-300 px-4 py-2">
+                    {Number(info.nominal.inferior)
+                      ?.toFixed(1)
+                      .replace(".", ",")}
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.rev.esqInf}
+                        {Number(info.rev.esqInf)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.rev.centroInf}
+                        {Number(info.rev.centroInf)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.rev.dirInf}
+                        {Number(info.rev.dirInf)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.rev.mediaInf}
+                        {Number(info.rev.mediaInf)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
                       <td className="border-2 border-blue-400 p-2">
-                        {info.rev.ligaInf}
+                        {Number(info.rev.ligaInf)?.toFixed(1).replace(".", ",")}
                       </td>
                     </td>
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.oil.esqSup}
+                        {Number(info.oil.esqSup)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oil.centroSup}
+                        {Number(info.oil.centroSup)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oil.dirSup}
+                        {Number(info.oil.dirSup)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.oil.mediaSup}
+                        {Number(info.oil.mediaSup)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
                     </td>
                   </td>
                   <td className="justify-center items-center border border-gray-300">
                     <td className="text-[15px]">
                       <td className="border border-black p-2">
-                        {info.oil.esqInf}
+                        {Number(info.oil.esqInf)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oil.centroInf}
+                        {Number(info.oil.centroInf)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
                       <td className="border border-black p-2">
-                        {info.oil.dirInf}
+                        {Number(info.oil.dirInf)?.toFixed(1).replace(".", ",")}
                       </td>
                       <td className="font-bold border-2 border-orange-400 p-2">
-                        {info.oil.mediaInf}
+                        {Number(info.oil.mediaInf)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
                       </td>
-                    </td>
-                  </td>
-                  <td className="justify-center items-center border border-gray-300">
-                    <td className="font-bold border-2 border-black p-2">
-                      {info.dureza.esq}
-                    </td>
-                    <td className="font-bold border-2 border-black p-2">
-                      {info.dureza.centro}
-                    </td>
-                    <td className="font-bold border-2 border-black p-2">
-                      {info.dureza.dir}
                     </td>
                   </td>
                 </tr>

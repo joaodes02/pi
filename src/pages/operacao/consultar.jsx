@@ -10,7 +10,7 @@ function Consultar({ dados, setDados }) {
 
   return (
     <>
-      <DadosConsultar />
+      <DadosConsultar setDados={setDados} />
       <Resultados dados={dados} />
     </>
   );

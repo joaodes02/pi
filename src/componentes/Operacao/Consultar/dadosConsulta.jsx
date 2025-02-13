@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function DadosConsulta({ value }) {
+function DadosConsulta({ setDados }) {
   const navigate = useNavigate();
+
+  // Definindo o estado da data inicial como a data de hoje
+  const [startDate, setStartDate] = useState(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Ajusta para 00:00 para garantir que só retornem dados de hoje
+    return today;
+  });
+  const [equipamento, setEquipamento] = useState("");
+  const [turno, setTurno] = useState("");
+
+  // Função para lidar com a alteração da data
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
     if (selectedDate) {
@@ -12,7 +24,26 @@ function DadosConsulta({ value }) {
     }
   };
 
-  const [startDate, setStartDate] = useState(new Date());
+  // Função para consultar os dados
+  const clickConsulta = () => {
+    if (!equipamento) {
+      alert("Selecione um equipamento antes de consultar.");
+      return;
+    }
+
+    // Se a data não foi selecionada, usamos a data de hoje
+    const selectedDate = startDate
+      ? startDate.toISOString()
+      : new Date().toISOString();
+    console.log(equipamento, turno, selectedDate);
+
+    const url = `http://localhost:3322/operacao/consultar?equipamento=${equipamento}&turno=${turno}&data=${selectedDate}`;
+
+    axios.get(url).then((result) => {
+      console.log(result);
+      setDados(result.data);
+    });
+  };
 
   const equipamentos = Array.from({ length: 3 }, (_, i) => {
     const equipamento = i + 4;
@@ -23,6 +54,15 @@ function DadosConsulta({ value }) {
     const turno = i + 1;
     return `Turno - ${turno}`;
   });
+
+  const handleEquipamento = (event) => {
+    setEquipamento(event.target.value);
+  };
+
+  const handleTurno = (event) => {
+    setTurno(event.target.value);
+  };
+
   return (
     <>
       <div className="flex items-center text-center justify-center">
@@ -36,7 +76,8 @@ function DadosConsulta({ value }) {
                 Equipamento:
               </label>
               <select
-                defaultValue=""
+                value={equipamento}
+                onChange={handleEquipamento}
                 className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
               >
                 <option value="" selected disabled>
@@ -53,7 +94,11 @@ function DadosConsulta({ value }) {
               <label className="text-sm font-medium text-gray-600">
                 Turno:
               </label>
-              <select className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none">
+              <select
+                value={turno}
+                onChange={handleTurno}
+                className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              >
                 <option value="" disabled selected>
                   Selecione
                 </option>
@@ -76,7 +121,10 @@ function DadosConsulta({ value }) {
               />
             </div>
             <div className="space-y-3 flex flex-col text-center">
-              <button className="font-bold hover:scale-105 w-[100px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300">
+              <button
+                onClick={clickConsulta}
+                className="font-bold hover:scale-105 w-[100px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
+              >
                 Consultar
               </button>
               <button

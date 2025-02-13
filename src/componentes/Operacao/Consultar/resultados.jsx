@@ -11,6 +11,21 @@ function Resultados({ dados }) {
       .includes(termoPesquisa);
   });
 
+  function formatarData(data) {
+    let newData = new Date(data);
+    newData.setHours(newData.getHours());
+    return newData
+      .toLocaleString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+      .replace(",", " |");
+  }
+
+  console.log(dadosFiltrados);
   return (
     <>
       <div className="intems-center justify-center flex p-4">
@@ -54,6 +69,7 @@ function Resultados({ dados }) {
                   Oléo. INFERIOR
                 </th>
                 <th className="border border-gray-300 px-4 py-2">Dureza</th>
+                <th className="border border-gray-300 px-4 py-2">Digitado:</th>
               </tr>
             </thead>
             <tbody>
@@ -61,7 +77,7 @@ function Resultados({ dados }) {
                 <tr key={info.id} className="hover:bg-gray-50">
                   <td
                     className={`border border-gray-300 px-4 py-2 ${
-                      info.dados.horario != "EXTRA"
+                      info.dados.horario !== "EXTRA"
                         ? "bg-slate-400"
                         : "bg-orange-400"
                     }`}
@@ -177,6 +193,11 @@ function Resultados({ dados }) {
                     <td className="font-bold border-2 border-black p-2">
                       {info.dureza.dir}
                     </td>
+                  </td>
+                  <td className="justify-center items-center border border-gray-300">
+                    <span className="p-2 font-bold">
+                      {formatarData(info.toc)}
+                    </span>
                   </td>
                 </tr>
               ))}

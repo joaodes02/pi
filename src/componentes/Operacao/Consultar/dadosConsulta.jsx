@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 
 function DadosConsulta({ setDados }) {
   const navigate = useNavigate();
@@ -9,35 +9,49 @@ function DadosConsulta({ setDados }) {
   const [startDate, setStartDate] = useState(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Ajusta para 00:00 para garantir que só retornem dados de hoje
-    return today;
+    return today; // Converte para o formato ISO (2025-02-13T00:00:00.000Z)
   });
+
+  useEffect(() => {
+    if (!startDate) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      setStartDate(today);
+    }
+  }, []);
+
+  const formattedStartDate = startDate ? startDate.toISOString() : "";
   const [equipamento, setEquipamento] = useState("");
   const [turno, setTurno] = useState("");
 
   // Função para lidar com a alteração da data
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
+    console.log("Data selecionada:", selectedDate);
+
     if (selectedDate) {
       setStartDate(new Date(selectedDate));
     } else {
-      setStartDate(null); // Permite limpar a data se necessário
+      setStartDate(new Date()); // Garante que sempre tenha uma data
     }
   };
 
-  // Função para consultar os dados
+  console.log(startDate);
+
   const clickConsulta = () => {
     if (!equipamento) {
       alert("Selecione um equipamento antes de consultar.");
       return;
     }
 
-    // Se a data não foi selecionada, usamos a data de hoje
+    // Se `startDate` for válido, converte para ISO; caso contrário, usa a data de hoje
     const selectedDate = startDate
       ? startDate.toISOString()
       : new Date().toISOString();
+
     console.log(equipamento, turno, selectedDate);
 
-    const url = `http://localhost:3322/operacao/consultar?equipamento=${equipamento}&turno=${turno}&data=${selectedDate}`;
+    const url = `http://localhost:3322/operacao/consultar?equipamento=${equipamento}&turno=${turno}&data=${formattedStartDate}`;
 
     axios.get(url).then((result) => {
       console.log(result);
@@ -45,6 +59,7 @@ function DadosConsulta({ setDados }) {
     });
   };
 
+  console.log(startDate);
   const equipamentos = Array.from({ length: 3 }, (_, i) => {
     const equipamento = i + 4;
     return `LEE${equipamento}`;

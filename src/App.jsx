@@ -57,6 +57,7 @@ function App() {
           <ProtectedRoute
             element={
               <Editar
+                idDados={idDados}
                 setIdDados={setIdDados}
                 setDados={setDados}
                 dados={dados}

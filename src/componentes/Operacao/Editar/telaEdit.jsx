@@ -2,16 +2,21 @@ import DadosConsulta from "../../Operacao/Consultar/dadosConsulta";
 import editIMG from "../../../assets/img/editar.png";
 import deleteIMG from "../../../assets/img/excluir.png";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 
-function TelaEdit({ setIdDados, dados, setDados }) {
+function TelaEdit({ setIdDados, dados, setDados, idDados }) {
   const navigate = useNavigate();
   function clickEdit(e, info) {
     if (window.confirm(`Deseja mesmo ir para tela de Edição?`)) {
+      console.log("id:", info.id);
       setIdDados(info.id);
       navigate("/inserir");
     }
   }
+
+  console.log("Fora da Function telaEdit", idDados); //falso;
+
   async function clickDelete(e, info) {
     if (window.confirm("Deseja mesmo excluir? ")) {
       try {
@@ -190,6 +195,21 @@ function TelaEdit({ setIdDados, dados, setDados }) {
                         {Number(info.oil.mediaInf)
                           ?.toFixed(1)
                           .replace(".", ",")}
+                      </td>
+                    </td>
+                  </td>
+                  <td className="justify-center items-center border border-gray-300">
+                    <td className="text-[15px]">
+                      <td className="border border-black p-2">
+                        {Number(info.dureza.esq)?.toFixed(1).replace(".", ",")}
+                      </td>
+                      <td className="border border-black p-2">
+                        {Number(info.dureza.centro)
+                          ?.toFixed(1)
+                          .replace(".", ",")}
+                      </td>
+                      <td className="border border-black p-2">
+                        {Number(info.dureza.dir)?.toFixed(1).replace(".", ",")}
                       </td>
                     </td>
                   </td>

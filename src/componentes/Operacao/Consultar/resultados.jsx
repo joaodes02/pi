@@ -12,6 +12,9 @@ function Resultados({ dados }) {
   });
 
   function formatarData(data) {
+    if (!data) {
+      return;
+    }
     let newData = new Date(data);
     newData.setHours(newData.getHours());
     return newData

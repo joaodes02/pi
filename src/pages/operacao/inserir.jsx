@@ -11,7 +11,6 @@ import { useNavigate } from "react-router";
 function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
   function recuperaDado() {
     var dado = dadosArray.find((d) => d.id === idDados);
-    setIdDados(false);
     return dado;
   }
   const navigate = useNavigate();
@@ -69,6 +68,65 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
 
     setDadosArray((prevDados) => [...prevDados, novoDado]);
     handleLimpar();
+  };
+  const editar = async (id) => {
+    if (!id || typeof id !== "number") {
+      console.error("ID inválido para edição:", id);
+      return;
+    }
+    const novosDados = {
+      toc: new Date(),
+      tom: new Date(),
+      dados: {
+        equipamento: dados.equipamento,
+        horario: dados.horario,
+        item: dados.item,
+        bobina: dados.bobina,
+      },
+      nominal: { superior: nominal.superior, inferior: nominal.inferior },
+      rev: {
+        esqSup: rev.esqSup,
+        centroSup: rev.centroSup,
+        dirSup: rev.dirSup,
+        esqInf: rev.esqInf,
+        centroInf: rev.centroInf,
+        dirInf: rev.dirInf,
+        ligaSup: rev.ligaSup,
+        ligaInf: rev.ligaInf,
+        mediaSup: rev.mediaSup,
+        mediaInf: rev.mediaInf,
+        dispSup: rev.dispSup,
+        dispInf: rev.dispInf,
+      },
+      dureza: {
+        esq: dureza.esq,
+        centro: dureza.centro,
+        dir: dureza.dir,
+      },
+      oil: {
+        esqSup: oil.esqSup,
+        centroSup: oil.centroSup,
+        dirSup: oil.dirSup,
+        mediaSup: oil.mediaSup,
+        esqInf: oil.esqInf,
+        centroInf: oil.centroInf,
+        dirInf: oil.dirInf,
+        mediaInf: oil.mediaInf,
+      },
+    };
+
+    try {
+      console.log(novosDados);
+      // Enviar a requisição PATCH utilizando o axios
+      const response = await axios.patch(
+        `http://localhost:3322/operacao/edit/${id}`,
+        novosDados
+      );
+
+      console.log("Operação editada com sucesso!", response.data);
+    } catch (error) {
+      console.error("Erro ao editar a operação:", error);
+    }
   };
 
   const [dadoEdit, setDadoEdit] = useState(recuperaDado());
@@ -137,7 +195,12 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
         </div>
       </div>
       <div className="absolute top-1/2 right-0 transform -translate-y-1/2 mr-[300px]">
-        <Buttons inserir={inserir} limpar={handleLimpar} />
+        <Buttons
+          editar={editar}
+          inserir={inserir}
+          limpar={handleLimpar}
+          idDados={idDados}
+        />
       </div>
     </div>
   );

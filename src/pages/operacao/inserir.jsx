@@ -127,6 +127,7 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
     } catch (error) {
       console.error("Erro ao editar a operação:", error);
     }
+    handleLimpar();
   };
 
   const [dadoEdit, setDadoEdit] = useState(recuperaDado());

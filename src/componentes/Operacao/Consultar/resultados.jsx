@@ -32,7 +32,7 @@ function Resultados({ dados }) {
   return (
     <>
       <div className="intems-center justify-center flex p-4">
-        <div className="text-sm font-medium text-gray-600 flex-col flex text-center border-2 p-2 border-gray-200 ">
+        <div className="text-sm font-medium text-gray-600 flex-col flex text-center border-2 rounded-full p-5 border-gray-200 ">
           <label className="text-sm font-medium text-gray-600">Pesquisa:</label>
           <input
             type="text"

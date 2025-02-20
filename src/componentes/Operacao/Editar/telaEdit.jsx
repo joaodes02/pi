@@ -37,7 +37,7 @@ function TelaEdit({ setIdDados, dados, setDados, idDados }) {
 
   return (
     <>
-      <DadosConsulta />
+      <DadosConsulta setDados={setDados} />
       <div className="p-1 flex justify-center">
         <div className="overflow-x-auto">
           <table className=" border-separate items-center text-center table-auto border-collapse border border-gray-300 w-[1500px]">

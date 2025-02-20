@@ -68,7 +68,7 @@ function ResultadosEm({ value }) {
                 Home
               </button>
             </div>
-          </div>
+          </div>  
         </div>
       </div>
     </>

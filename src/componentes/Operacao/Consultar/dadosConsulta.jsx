@@ -85,7 +85,7 @@ function DadosConsulta({ setDados }) {
           <h1 className="text-3xl font-bold">
             Resultados - Laboratório de folhas metálicas
           </h1>
-          <div className="p-5 items-center justify-center border border-gray-300 mt-6 flex space-x-6">
+          <div className="p-10 items-center justify-center border rounded-md border-gray-300 mt-6 flex space-x-6">
             <div className="flex flex-col">
               <label className="text-sm font-medium text-gray-600">
                 Equipamento:

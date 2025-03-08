@@ -75,12 +75,16 @@ function App() {
         }
       />
       <Route
-        path="/inserirTec"
-        element={<ProtectedRoute element={<InserirProcesso />} />}
+        path="/resultadosEm"
+        element={
+          <ProtectedRoute
+            element={<ResultadosEm value={value} setValue={setValue} />}
+          />
+        }
       />
       <Route
-        path="/resultadosEm"
-        element={<ProtectedRoute element={<ResultadosEm />} />}
+        path="/inserirTec"
+        element={<ProtectedRoute element={<InserirProcesso />} />}
       />
       <Route
         path="/consultaTec"

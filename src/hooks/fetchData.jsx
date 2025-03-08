@@ -1,5 +1,4 @@
-import axios from "axios"
-
+import axios from "axios";
 
 export const fetchData = async (setDados) => {
   try {
@@ -11,7 +10,7 @@ export const fetchData = async (setDados) => {
       toc: operacao.toc,
       tom: operacao.tom,
       dados: {
-        equipamento: operacao.dados?.equipamento ?? "N/A",  // Usa "N/A" se for null ou undefined
+        equipamento: operacao.dados?.equipamento ?? "N/A", // Usa "N/A" se for null ou undefined
         horario: operacao.dados?.horario ?? "N/A",
         item: operacao.dados?.item ?? "N/A",
         bobina: operacao.dados?.bobina ?? "N/A",

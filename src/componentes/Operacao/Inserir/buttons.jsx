@@ -4,6 +4,13 @@ function Buttons({ idDados, limpar, inserir, editar }) {
     !idDados ? inserir() : editar(idDados);
     console.log(idDados);
   };
+
+  const navigateAndReload = () => {
+    navigate("/menu");
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
   const navigate = useNavigate();
   return (
     <>
@@ -38,9 +45,7 @@ function Buttons({ idDados, limpar, inserir, editar }) {
         </button>
         <button
           className="font-bold hover:scale-105 w-[200px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-500"
-          onClick={(e) => {
-            navigate("/menu");
-          }}
+          onClick={navigateAndReload}
         >
           Home
         </button>

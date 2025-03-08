@@ -1,5 +1,5 @@
-// fetchData.js
-import axios from "axios";
+import axios from "axios"
+
 
 export const fetchData = async (setDados) => {
   try {
@@ -8,46 +8,46 @@ export const fetchData = async (setDados) => {
     );
     const operacoesFormatadas = response.data.map((operacao) => ({
       id: operacao.id,
-      toc: operacao.TOC,
-      tom: operacao.TOM,
+      toc: operacao.toc,
+      tom: operacao.tom,
       dados: {
-        equipamento: operacao.dados.equipamento,
-        horario: operacao.dados.horario,
-        item: operacao.dados.item,
-        bobina: operacao.dados.bobina,
+        equipamento: operacao.dados?.equipamento ?? "N/A",  // Usa "N/A" se for null ou undefined
+        horario: operacao.dados?.horario ?? "N/A",
+        item: operacao.dados?.item ?? "N/A",
+        bobina: operacao.dados?.bobina ?? "N/A",
       },
       nominal: {
-        superior: operacao.nominal.superior.toString(),
-        inferior: operacao.nominal.inferior.toString(),
+        superior: operacao.nominal?.superior?.toString() ?? "0",
+        inferior: operacao.nominal?.inferior?.toString() ?? "0",
       },
       rev: {
-        esqSup: operacao.rev.esqSup.toString(),
-        centroSup: operacao.rev.centroSup.toString(),
-        dirSup: operacao.rev.dirSup.toString(),
-        esqInf: operacao.rev.esqInf.toString(),
-        centroInf: operacao.rev.centroInf.toString(),
-        dirInf: operacao.rev.dirInf.toString(),
-        ligaSup: operacao.rev.ligaSup.toString(),
-        ligaInf: operacao.rev.ligaInf.toString(),
-        mediaSup: operacao.rev.mediaSup.toString(),
-        mediaInf: operacao.rev.mediaInf.toString(),
-        dispSup: operacao.rev.dispSup.toString(),
-        dispInf: operacao.rev.dispInf.toString(),
+        esqSup: operacao.rev?.esqSup?.toString() ?? "0",
+        centroSup: operacao.rev?.centroSup?.toString() ?? "0",
+        dirSup: operacao.rev?.dirSup?.toString() ?? "0",
+        esqInf: operacao.rev?.esqInf?.toString() ?? "0",
+        centroInf: operacao.rev?.centroInf?.toString() ?? "0",
+        dirInf: operacao.rev?.dirInf?.toString() ?? "0",
+        ligaSup: operacao.rev?.ligaSup?.toString() ?? "0",
+        ligaInf: operacao.rev?.ligaInf?.toString() ?? "0",
+        mediaSup: operacao.rev?.mediaSup?.toString() ?? "0",
+        mediaInf: operacao.rev?.mediaInf?.toString() ?? "0",
+        dispSup: operacao.rev?.dispSup?.toString() ?? "0",
+        dispInf: operacao.rev?.dispInf?.toString() ?? "0",
       },
       dureza: {
-        esq: operacao.dureza.esq,
-        centro: operacao.dureza.centro,
-        dir: operacao.dureza.dir,
+        esq: operacao.dureza?.esq ?? "0",
+        centro: operacao.dureza?.centro ?? "0",
+        dir: operacao.dureza?.dir ?? "0",
       },
       oil: {
-        esqSup: operacao.oil.esqSup.toString(),
-        centroSup: operacao.oil.centroSup.toString(),
-        dirSup: operacao.oil.dirSup.toString(),
-        mediaSup: operacao.oil.mediaSup.toString(),
-        esqInf: operacao.oil.esqInf.toString(),
-        centroInf: operacao.oil.centroInf.toString(),
-        dirInf: operacao.oil.dirInf.toString(),
-        mediaInf: operacao.oil.mediaInf.toString(),
+        esqSup: operacao.oil?.esqSup?.toString() ?? "0",
+        centroSup: operacao.oil?.centroSup?.toString() ?? "0",
+        dirSup: operacao.oil?.dirSup?.toString() ?? "0",
+        mediaSup: operacao.oil?.mediaSup?.toString() ?? "0",
+        esqInf: operacao.oil?.esqInf?.toString() ?? "0",
+        centroInf: operacao.oil?.centroInf?.toString() ?? "0",
+        dirInf: operacao.oil?.dirInf?.toString() ?? "0",
+        mediaInf: operacao.oil?.mediaInf?.toString() ?? "0",
       },
     }));
 

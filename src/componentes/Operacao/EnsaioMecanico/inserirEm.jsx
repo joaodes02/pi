@@ -53,20 +53,20 @@ function InserirEm({ value, setValue }) {
 
   return (
     <>
-      <div className="flex  items-center justify-center min-h-screen flex-col">
-        <h1 className=" font-light text-3xl italic">
+      <div className="relative flex items-center justify-center min-h-screen flex-col bg-gradient-to-r from-blue-50 to-blue-100 py-8">
+        <h1 className="text-3xl font-extrabold text-indigo-700 mb-6 text-center">
           Insira os resultados do Ensaio Mecânico:
         </h1>
-        <div className="border-2 border-gray-300 mt-5 flex p-2 flex-wrap max-w-[800px] ">
-          <div className="p-2 flex text-center flex-col">
-            <label className="text-sm font-medium text-gray-600">
+        <div className="border-2 border-gray-300 mt-5 p-4 flex flex-wrap max-w-[800px] bg-white rounded-lg shadow-lg">
+          <div className="p-4 w-full sm:w-1/2 md:w-1/4 flex text-center flex-col mb-4">
+            <label className="text-sm font-medium text-gray-600 mb-2">
               Tempera:
             </label>
             <select
               name="tempera"
               value={value.tempera || ""}
               onChange={handleTemperaChange}
-              className="w-[130px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-300 focus:outline-none"
             >
               <option value="" disabled>
                 Selecione
@@ -78,6 +78,7 @@ function InserirEm({ value, setValue }) {
               ))}
             </select>
           </div>
+
           {[
             "Item",
             "Bobina",
@@ -88,45 +89,49 @@ function InserirEm({ value, setValue }) {
             "R",
             "N",
           ].map((label, index) => (
-            <div key={index} className="p-2 flex text-center flex-col">
-              <label className="text-sm font-medium text-gray-600">
+            <div
+              key={index}
+              className="p-4 w-full sm:w-1/2 md:w-1/4 flex text-center flex-col mb-4"
+            >
+              <label className="text-sm font-medium text-gray-600 mb-2">
                 {label}:
               </label>
               <input
                 name={label}
-                value={dadosTracion[label] || ""} // Garante que os valores sejam controlados
+                value={dadosTracion[label] || ""}
                 onChange={(e) =>
                   setDadosTracion((prev) => ({
                     ...prev,
                     [label]: e.target.value,
                   }))
                 }
-                className="w-[100px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-300 focus:outline-none"
                 type="text"
                 disabled={isDisabled}
               />
             </div>
           ))}
         </div>
-        <div className="flex space-x-4 mt-5">
-          <button className="font-bold hover:scale-105 w-[150px] h-[40px] bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-500">
+
+        <div className=" flex flex-col absolute right-80 top-50 space-y-4">
+          <button className="font-bold hover:scale-105 w-[200px] h-[50px] bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-300">
             Inserir
           </button>
           <button
             onClick={handleLimpar}
-            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition duration-500"
+            className="font-bold hover:scale-105 w-[200px] h-[50px] bg-red-600 text-white py-2 rounded-md hover:bg-red-700 transition duration-300"
           >
             Limpar
           </button>
           <button
             onClick={() => navigate("/resultadosEm")}
-            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-orange-400 text-white py-2 rounded-md hover:bg-orange-700 transition duration-500"
+            className="font-bold hover:scale-105 w-[200px] h-[50px] bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-700 transition duration-300"
           >
             Resultados
           </button>
           <button
             onClick={() => navigate("/menu")}
-            className="font-bold hover:scale-105 w-[150px] h-[40px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-500"
+            className="font-bold hover:scale-105 w-[200px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
           >
             Home
           </button>

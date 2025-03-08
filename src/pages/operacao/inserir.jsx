@@ -173,10 +173,12 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen w-full bg-gray-200">
-      <h1 className="text-3xl pb-4 font-bold">Inclusão de resultado:</h1>
-      <div className="p-3 flex flex-col border-4 border-indigo-200 bg-gray-200">
-        <div className="p-2 border border-gray-400 mt-2 w-[800px]">
+    <div className="flex flex-col items-center justify-center h-screen w-full bg-gradient-to-b from-gray-100 to-gray-300 p-2 overflow-hidden">
+      <h1 className="text-4xl pb-4 font-extrabold text-indigo-700 shadow-md">
+        Inserir Resultados
+      </h1>
+      <div className="p-4 flex flex-col border-4 border-indigo-300 bg-white shadow-lg rounded-xl max-h-[90vh] overflow-hidden">
+        <div className="p-2 border border-gray-400 mt-2 w-[800px] bg-gray-100 rounded-lg shadow-md">
           <Dados
             setIdDados={setIdDados}
             idDados={idDados}
@@ -184,18 +186,18 @@ function Inserir({ setDadosArray, setIdDados, idDados, dadosArray }) {
             setValue={setDados}
           />
         </div>
-        <div className="border border-gray-400 mt-2 w-[800px]">
+        <div className="border border-gray-400 mt-2 w-[800px] bg-gray-100 rounded-lg shadow-md">
           <Nominal value={nominal} setValue={setNominal} />
           <Rev value={rev} setValue={setRev} />
         </div>
-        <div className="p-2 mt-2 border border-gray-400 mt-2 w-[800px]">
+        <div className="p-2 mt-2 border border-gray-400 w-[800px] bg-gray-100 rounded-lg shadow-md">
           <Dureza value={dureza} setValue={setDureza} />
         </div>
-        <div className="p-2 mt-2 border border-gray-400 mt-2 w-[800px]">
+        <div className="p-2 mt-2 border border-gray-400 w-[800px] bg-gray-100 rounded-lg shadow-md">
           <Oil value={oil} setValue={setOil} />
         </div>
       </div>
-      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 mr-[300px]">
+      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 mr-[200px] flex flex-col gap-2">
         <Buttons
           editar={editar}
           inserir={inserir}

@@ -10,8 +10,10 @@ function Consultar({ dados, setDados }) {
 
   return (
     <>
-      <DadosConsultar setDados={setDados} />
-      <Resultados dados={dados} />
+      <div className="min-h-screen bg-gray-100">
+        <DadosConsultar setDados={setDados} />
+        <Resultados dados={dados} />
+      </div>
     </>
   );
 }

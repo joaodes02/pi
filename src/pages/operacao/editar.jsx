@@ -4,15 +4,17 @@ import { useEffect } from "react";
 function Editar({ setIdDados, dados, setDados, idDados }) {
   useEffect(() => {
     fetchData(setDados);
-  }, []);
+  },[]);
 
   return (
-    <TelaEdit
-      dados={dados}
-      setDados={setDados}
-      setIdDados={setIdDados}
-      idDados={idDados}
-    />
+    <div className=" bg-gray-100 h-screen">
+      <TelaEdit
+        dados={dados}
+        setDados={setDados}
+        setIdDados={setIdDados}
+        idDados={idDados}
+      />
+    </div>
   );
 }
 

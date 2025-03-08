@@ -80,75 +80,85 @@ function DadosConsulta({ setDados }) {
 
   return (
     <>
-      <div className="flex items-center text-center justify-center">
-        <div className="mt-4 flex flex-col">
-          <h1 className="text-3xl font-bold">
-            Resultados - Laboratório de folhas metálicas
+      <div className="flex items-center justify-center bg-gray-100 p-4">
+        <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-xl border border-gray-300 w-[600px]">
+          <h1 className="text-3xl font-extrabold text-indigo-700 mb-6 text-center">
+            Resultados - Folhas Metálicas
           </h1>
-          <div className="p-10 items-center justify-center border rounded-md border-gray-300 mt-6 flex space-x-6">
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-600">
-                Equipamento:
-              </label>
-              <select
-                value={equipamento}
-                onChange={handleEquipamento}
-                className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              >
-                <option value="" selected disabled>
-                  Selecione
-                </option>
-                {equipamentos.map((equipamento, index) => (
-                  <option key={index} value={equipamento}>
-                    {equipamento}
+
+          <div className="p-6 border rounded-lg bg-gray-50 shadow-md flex flex-col space-y-6 w-full">
+            <div className="grid grid-cols-3 gap-6">
+              <div className="flex flex-col">
+                <label className="text-sm font-medium text-gray-700 mb-1">
+                  Equipamento:
+                </label>
+                <select
+                  value={equipamento}
+                  onChange={handleEquipamento}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-300 focus:outline-none"
+                >
+                  <option value="" disabled>
+                    Selecione
                   </option>
-                ))}
-              </select>
-            </div>
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-600">
-                Turno:
-              </label>
-              <select
-                value={turno}
-                onChange={handleTurno}
-                className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              >
-                <option value="" disabled selected>
-                  Selecione
-                </option>
-                {turnos.map((turno, index) => (
-                  <option key={index} value={turno}>
-                    {turno}
+                  {equipamentos.map((equipamento, index) => (
+                    <option key={index} value={equipamento}>
+                      {equipamento}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-sm font-medium text-gray-700 mb-1">
+                  Turno:
+                </label>
+                <select
+                  value={turno}
+                  onChange={handleTurno}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-300 focus:outline-none"
+                >
+                  <option value="" disabled>
+                    Selecione
                   </option>
-                ))}
-              </select>
+                  {turnos.map((turno, index) => (
+                    <option key={index} value={turno}>
+                      {turno}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-sm font-medium text-gray-700 mb-1">
+                  Data:
+                </label>
+                <input
+                  type="date"
+                  value={startDate ? startDate.toISOString().split("T")[0] : ""}
+                  onChange={handleDateChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-300 focus:outline-none"
+                />
+              </div>
             </div>
-            <div className="flex flex-col text-center">
-              <label className="text-sm font-medium text-gray-600">
-                Selecione a Data
-              </label>
-              <input
-                type="date"
-                value={startDate ? startDate.toISOString().split("T")[0] : ""}
-                onChange={handleDateChange}
-                className="w-[150px] px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:outline-none"
-              />
-            </div>
-            <div className="space-y-3 flex flex-col text-center">
+
+            <div className="flex space-x-6 justify-center">
               <button
-                onClick={clickConsulta}
-                className="font-bold hover:scale-105 w-[100px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
-              >
-                Consultar
-              </button>
-              <button
-                className="font-bold hover:scale-105 w-[100px] h-[50px] bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
-                onClick={(e) => {
-                  navigate("/menu");
-                }}
+                onClick={(e) => navigate("/menu")}
+                className="w-[120px] h-[50px] font-bold bg-gray-600 text-white rounded-lg hover:bg-gray-700 hover:scale-105 transition duration-300 shadow-md"
               >
                 Home
+              </button>
+              <button
+                onClick={(e) => navigate("/inserir")}
+                className="w-[120px] h-[50px] font-bold bg-gray-600 text-white rounded-lg hover:bg-gray-700 hover:scale-105 transition duration-300 shadow-md"
+              >
+                Inserir
+              </button>
+              <button
+                onClick={clickConsulta}
+                className="w-[120px] h-[50px] font-bold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 hover:scale-105 transition duration-300 shadow-md"
+              >
+                Consultar
               </button>
             </div>
           </div>

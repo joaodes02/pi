@@ -14,11 +14,6 @@ function ResultadosEm({ value }) {
 
   const [startDate, setStartDate] = useState(new Date());
 
-  //   const equipamentos = Array.from({ length: 3 }, (_, i) => {
-  //     const equipamento = i + 4;
-  //     return `LEE${equipamento}`;
-  //   });
-
   const turnos = Array.from({ length: 3 }, (_, i) => {
     const turno = i + 1;
     return `Turno - ${turno}`;
@@ -68,7 +63,7 @@ function ResultadosEm({ value }) {
                 Home
               </button>
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     </>

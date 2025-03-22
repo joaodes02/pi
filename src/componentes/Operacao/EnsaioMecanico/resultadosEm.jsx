@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { data, useNavigate } from "react-router-dom";
 
-function DadosConsultaEm({ setDados }) {
+function DadosConsultaEm({ dadosTracion, setDadosTracion }) {
   const navigate = useNavigate();
 
   // Definindo o estado da data inicial como a data de hoje
@@ -37,25 +37,6 @@ function DadosConsultaEm({ setDados }) {
 
   console.log(startDate);
 
-  // const clickConsulta = () => {
-  //   if (!turno) {
-  //     alert("Selecione um turno antes de consultar.");
-  //     return;
-  //   }
-
-  //   // Se `startDate` for válido, converte para ISO; caso contrário, usa a data de hoje
-  //   const selectedDate = startDate
-  //     ? startDate.toISOString()
-  //     : new Date().toISOString();
-
-  //   const url = `http://localhost:3322/operacao/consultar?equipamento=${equipamento}&turno=${turno}&data=${formattedStartDate}`;
-
-  //   axios.get(url).then((result) => {
-  //     console.log(result);
-  //     setDados(result.data);
-  //   });
-  // };
-
   const turnos = Array.from({ length: 3 }, (_, i) => {
     const turno = i + 1;
     return `Turno - ${turno}`;
@@ -67,7 +48,7 @@ function DadosConsultaEm({ setDados }) {
 
   return (
     <>
-      <div className="flex items-center justify-center bg-gray-100 p-4">
+      <div className="flex flex-col items-center justify-center bg-gray-100 h-screen p-4">
         <div className="flex flex-col items-center p-8 bg-white shadow-lg rounded-xl border border-gray-300 w-[600px]">
           <h1 className="text-3xl font-extrabold text-indigo-700 mb-6 text-center">
             Ensaio Mecânico - Folhas Metálicas
@@ -128,6 +109,62 @@ function DadosConsultaEm({ setDados }) {
                 Consultar
               </button>
             </div>
+          </div>
+        </div>
+        <div className="flex mt-5 ">
+          <div className="overflow-x-auto shadow-lg rounded-lg border border-gray-300">
+            <table className="table-auto text-center w-full border-separate border-collapse">
+              <thead className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+                <tr className="">
+                  <th className="border border-gray-300 px-4 py-2">Tempera</th>
+                  <th className="border border-gray-300 px-4 py-2">Item</th>
+                  <th className="border border-gray-300 px-4 py-2">Bobina</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Espessura
+                  </th>
+                  <th className="border border-gray-300 px-4 py-2">Le</th>
+                  <th className="border border-gray-300 px-4 py-2">Lr</th>
+                  <th className="border border-gray-300 px-4 py-2">
+                    Alongamento
+                  </th>
+                  <th className="border border-gray-300 px-4 py-2">R</th>
+                  <th className="border border-gray-300 px-4 py-2">N</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dadosTracion.map((dado) => (
+                  <tr key={dado.id}>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.tempera}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.item}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.bobina}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.espessura}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.le}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.lr}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.alongamento}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.r}
+                    </td>
+                    <td className="border border-gray-300 px-4 py-2">
+                      {dado.n}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

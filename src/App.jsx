@@ -17,6 +17,20 @@ function App() {
   const [idDados, setIdDados] = useState(false);
   const [value, setValue] = useState({});
   const [dados, setDados] = useState([]);
+  const [dadosTracion, setDadosTracion] = useState([
+    {
+      id: 1,
+      tempera: "TH435",
+      item: "e40089",
+      bobina: 300,
+      espessura: 0.5,
+      le: 445.65,
+      lr: 405.65,
+      alongamento: 16.7,
+      r: 0.987,
+      n: 0.877,
+    },
+  ]);
 
   useEffect(() => {
     fetchData(setDados);
@@ -78,7 +92,12 @@ function App() {
         path="/resultadosEm"
         element={
           <ProtectedRoute
-            element={<ResultadosEm value={value} setValue={setValue} />}
+            element={
+              <ResultadosEm
+                dadosTracion={dadosTracion}
+                setDadosTracion={setDadosTracion}
+              />
+            }
           />
         }
       />
